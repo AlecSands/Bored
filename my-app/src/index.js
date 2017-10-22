@@ -33,14 +33,27 @@ class Header extends React.Component {
 }
 
 class Question extends React.Component {
-  render() {
+  render(props) {
     return (
-      <p>Sample Question?</p>
+      <p>Sample Question? {props.value}</p>
     )
   }
 }
 
 class Quiz extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      questions = Array(5).fill('Random Question')
+    }
+  }
+
+  renderQuestion(i) {
+    <Question
+      value={}
+    />
+  }
+
   render() {
     return (
       <div>
