@@ -32,7 +32,42 @@ class Header extends React.Component {
   }
 }
 
+class Question extends React.Component {
+  render() {
+    return (
+      <p>Sample Question?</p>
+    )
+  }
+}
+
+class Quiz extends React.Component {
+  render() {
+    return (
+      <div>
+        <Question />
+        <Question />
+        <Question />
+        <Question />
+        <Question />
+      </div>
+    )
+  }
+}
+
+class Assessment extends React.Component {
+  render() {
+    return (
+      <div>
+        <Quiz />
+      </div>
+    )
+  }
+}
+
 ReactDOM.render(
-  <Header />,
+  <div>
+    <Header />
+    <Assessment />
+  </div>,
   document.getElementById('root')
 );
