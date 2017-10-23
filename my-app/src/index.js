@@ -50,18 +50,11 @@ const SliderExampleSimple = () => (
 
 // What is a question?  A possible state would be answered or not.
 class Question extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      value: 'awsomeness',
-      complete: false,
-    }
-  }
   render() {
     return (
       <div>
           <div>
-            <p>Sample Question? {this.state.value}</p>
+            {this.props.value}
             <SliderExampleSimple />
           </div>
       </div>
@@ -70,15 +63,33 @@ class Question extends React.Component {
 }
 
 class Quiz extends React.Component {
+  constructor(props) {
+    super(props);
+    this.questions = [
+      'Personality Question',
+      'Mood Question',
+      'Interests Question',
+      'Another Personality Question',
+      'Another Mood Question'
+    ]
+  }
+
+  renderQuestion(i) {
+    return (
+      <Question
+        value={this.questions[i]}
+      />
+    )
+  }
 
   render() {
     return (
       <div>
-        <Question />
-        <Question />
-        <Question />
-        <Question />
-        <Question />
+        {this.renderQuestion(0)}
+        {this.renderQuestion(1)}
+        {this.renderQuestion(2)}
+        {this.renderQuestion(3)}
+        {this.renderQuestion(4)}
       </div>
     )
   }
@@ -96,7 +107,6 @@ class Assessment extends React.Component {
 
 ReactDOM.render(
   <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-  {/* <MuiThemeProvider> */}
     <div>
       <Header />
       <Assessment />
