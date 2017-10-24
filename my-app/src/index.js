@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// Material-UI Related Imports
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Slider from 'material-ui/Slider';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
 import './index.css';
 
 // Why are these called classes?  Are they classy?  Are other things classless?
@@ -23,18 +27,15 @@ class Subtitle extends React.Component {
 class Title extends React.Component {
   render() {
     return (
-      <h1>Bored?</h1>
+      <h1>Are you bored?</h1>
     )
   }
 }
 
 class Header extends React.Component {
   render() {
-    let titleText = "Are you bored?"
-
     return (
       <div className="header">
-        <h1>{titleText}</h1>
         <Title />
         <Subtitle />
       </div>
@@ -53,11 +54,28 @@ class Question extends React.Component {
   render() {
     return (
       <div>
-          <div>
-            {this.props.value}
-            <SliderExampleSimple />
-          </div>
+        {this.props.value}
+        <SliderExampleSimple />
       </div>
+    )
+  }
+}
+
+const style = {
+  margin: 12,
+};
+
+const RaisedButtonExampleSimple = () => (
+  <div>
+    <RaisedButton label="Submit" primary={true} style={style} />
+  </div>
+);
+
+
+class Submit extends React.Component {
+  render() {
+    return (
+      <RaisedButtonExampleSimple />
     )
   }
 }
@@ -84,13 +102,16 @@ class Quiz extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.renderQuestion(0)}
-        {this.renderQuestion(1)}
-        {this.renderQuestion(2)}
-        {this.renderQuestion(3)}
-        {this.renderQuestion(4)}
-      </div>
+      <Card class="materialCard">
+        <div>
+          {this.renderQuestion(0)}
+          {this.renderQuestion(1)}
+          {this.renderQuestion(2)}
+          {this.renderQuestion(3)}
+          {this.renderQuestion(4)}
+        </div>
+        <Submit />
+      </Card>
     )
   }
 }
@@ -106,7 +127,8 @@ class Assessment extends React.Component {
 }
 
 ReactDOM.render(
-  <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+  // <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+  <MuiThemeProvider>
     <div>
       <Header />
       <Assessment />

@@ -1,9 +1,17 @@
 * {
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
-  color: white;
+  /*color: white;*/
 }
 
 body {
-    background-color: rgb(48, 48, 48);
+    /*background-color: rgb(48, 48, 48);*/
+}
+
+.materialCard {
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin: 25px;
 }
