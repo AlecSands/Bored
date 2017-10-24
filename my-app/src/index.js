@@ -67,7 +67,12 @@ const style = {
 
 const RaisedButtonExampleSimple = () => (
   <div>
-    <RaisedButton label="Submit" primary={true} style={style} />
+    <RaisedButton
+      label="Submit"
+      primary={true}
+      style={style}
+      onClick={() => console.log("submit button clicked")}
+    />
   </div>
 );
 
