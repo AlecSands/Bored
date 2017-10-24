@@ -105,7 +105,10 @@ class Quiz extends React.Component {
       'Another Mood Question'
     ]
     this.state = {
-      answers: {inputValue: 0}
+      answers: {
+        answer1: 0,
+        answer2: 0
+      }
     }
   }
 
@@ -113,22 +116,35 @@ class Quiz extends React.Component {
     return (
       <div>
         <Question
-          value={this.questions}
+          value={this.questions[0]}
         />
         <Slider
-          value={this.state.answers.inputValue}
-          onChange={(id, name) => this.updateInputValue(id, name)}
+          value={this.state.answers.answer1}
+          onChange={(id, name, description) => this.updateInputValue(id, name, "answer1")}
+        />
+        <Question
+          value={this.questions[1]}
+        />
+        <Slider
+          value={this.state.answers.answer2}
+          onChange={(id, name, description) => this.updateInputValue(id, name, "answer2")}
         />
       </div>
     )
   }
 
-  updateInputValue(id, name, evt, key, payload) {
+  updateInputValue(id, name, description) {
     // console.log('id:', id);
     // console.log('name:', name);
-    this.setState({answers: {
-      inputValue: name
-    }})
+    // console.log(description);
+    // console.log(this);
+    if (description == "answer1") {
+      // console.log('setting answer1');
+      this.state.answers.answer1 = name;
+    } else if (description == "answer2") {
+      // console.log('setting answer2');
+      this.state.answers.answer2 = name;
+    }
   }
 
   render() {
