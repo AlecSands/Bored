@@ -55,7 +55,7 @@ class Question extends React.Component {
     return (
       <div>
         {this.props.value}
-        <SliderExampleSimple />
+        {/* <SliderExampleSimple /> */}
       </div>
     )
   }
@@ -65,22 +65,31 @@ const style = {
   margin: 12,
 };
 
-const RaisedButtonExampleSimple = () => (
-  <div>
-    <RaisedButton
-      label="Submit"
-      primary={true}
-      style={style}
-      onClick={() => console.log("submit button clicked")}
-    />
-  </div>
-);
+class RaisedButtonExampleSimple extends React.Component {
+  render() {
+    return (
+      <div>
+        <RaisedButton
+          label="Submit"
+          primary={true}
+          style={style}
+          onClick={() => console.log("answers:", this)}
+        />
+      </div>
+    )
+  }
+}
 
 
 class Submit extends React.Component {
   render() {
     return (
-      <RaisedButtonExampleSimple />
+      <RaisedButton
+        label="Submit"
+        primary={true}
+        style={style}
+        onClick={() => console.log("answers:", this)}
+      />
     )
   }
 }
@@ -95,27 +104,45 @@ class Quiz extends React.Component {
       'Another Personality Question',
       'Another Mood Question'
     ]
+    this.state = {
+      answers: {inputValue: 0}
+    }
   }
 
-  renderQuestion(i) {
+  renderQuestion() {
     return (
-      <Question
-        value={this.questions[i]}
-      />
+      <div>
+        <Question
+          value={this.questions}
+        />
+        <Slider
+          value={this.state.answers.inputValue}
+          onChange={(id, name) => this.updateInputValue(id, name)}
+        />
+      </div>
     )
+  }
+
+  updateInputValue(id, name, evt, key, payload) {
+    // console.log('id:', id);
+    // console.log('name:', name);
+    this.setState({answers: {
+      inputValue: name
+    }})
   }
 
   render() {
     return (
       <Card class="materialCard">
         <div>
-          {this.renderQuestion(0)}
-          {this.renderQuestion(1)}
-          {this.renderQuestion(2)}
-          {this.renderQuestion(3)}
-          {this.renderQuestion(4)}
+          {this.renderQuestion()}
         </div>
-        <Submit />
+        <RaisedButton
+          label="Submit"
+          primary={true}
+          style={style}
+          onClick={() => console.log("answers:", this.state.answers)}
+        />
       </Card>
     )
   }
