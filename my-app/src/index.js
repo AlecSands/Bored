@@ -3,10 +3,40 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Slider from 'material-ui/Slider';
+
 class Title extends React.Component {
   render() {
     return (
-      <h1>Bored?</h1>
+      <h1>{this.props.data}</h1>
+    )
+  }
+}
+
+class QuestionPrompt extends React.Component {
+  render() {
+    return (
+      <h3>{this.props.data}</h3>
+    )
+  }
+}
+
+class QuestionInput extends React.Component {
+  render() {
+    return (
+      <Slider />
+    )
+  }
+}
+
+class Question extends React.Component {
+  render() {
+    return (
+      <div>
+        <QuestionPrompt data="Do you like crowds?"/>
+        <QuestionInput />
+      </div>
     )
   }
 }
@@ -15,9 +45,7 @@ class Questions extends React.Component {
   render() {
     return (
       <div>
-        <p>Test Question 1</p>
-        <p>Test Question 2</p>
-        <p>Test Question 3</p>
+        <Question />
       </div>
     )
   }
@@ -27,7 +55,7 @@ class Input extends React.Component {
   render() {
     return (
       <div>
-        <Title />
+        <Title data="Bored?"/>
         <Questions />
       </div>
     )
@@ -54,6 +82,8 @@ class BoredApp extends React.Component {
 }
 
 ReactDOM.render(
-  <BoredApp />,
+  <MuiThemeProvider>
+    <BoredApp />
+  </MuiThemeProvider>,
   document.getElementById('root')
 );
