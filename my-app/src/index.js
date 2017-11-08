@@ -3,10 +3,33 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 
+class Title extends React.Component {
+  render() {
+    return (
+      <h1>Bored?</h1>
+    )
+  }
+}
+
+class Questions extends React.Component {
+  render() {
+    return (
+      <div>
+        <p>Test Question 1</p>
+        <p>Test Question 2</p>
+        <p>Test Question 3</p>
+      </div>
+    )
+  }
+}
+
 class Input extends React.Component {
   render() {
     return (
-      <h1>Input Test</h1>
+      <div>
+        <Title />
+        <Questions />
+      </div>
     )
   }
 }
