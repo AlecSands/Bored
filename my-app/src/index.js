@@ -24,9 +24,11 @@ class QuestionPrompt extends React.Component {
 
 class QuestionInput extends React.Component {
   render() {
-    return (
-      <Slider />
-    )
+    if (this.props.inputType == "Slider") {
+      return (
+        <Slider />
+      )
+    }
   }
 }
 
@@ -35,7 +37,7 @@ class Question extends React.Component {
     return (
       <div>
         <QuestionPrompt data={this.props.data}/>
-        <QuestionInput />
+        <QuestionInput inputType={this.props.inputType}/>
       </div>
     )
   }
@@ -45,8 +47,14 @@ class Questions extends React.Component {
   render() {
     return (
       <div>
-        <Question data="Do you like crowds?"/>
-        <Question data="Would you rather pet a fluffy rabbit or learn about a new theory?"/>
+        <Question
+          data="Do you like crowds?"
+          inputType="Slider"
+        />
+        <Question
+          data="Would you rather pet a fluffy rabbit or learn about a new theory?"
+          inputType="Slider"
+        />
       </div>
     )
   }
