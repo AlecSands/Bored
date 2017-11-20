@@ -8,9 +8,6 @@ import Slider from 'material-ui/Slider';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 
 const styles = {
-  block: {
-    maxWidth: 250,
-  },
   radioButton: {
     marginBottom: 16,
   },
@@ -35,11 +32,38 @@ class QuestionPrompt extends React.Component {
 class Radio extends React.Component {
   render() {
     return (
-      <RadioButton
-        value="light"
-        label="Simple"
-        style={styles.radioButton}
-      />
+      <RadioButtonGroup>
+        <RadioButton
+          value="light"
+          label="Proud"
+          style={styles.radioButton}
+        />
+        <RadioButton
+          value="light"
+          label="Amused"
+          style={styles.radioButton}
+        />
+        <RadioButton
+          value="light"
+          label="Pleasure"
+          style={styles.radioButton}
+        />
+        <RadioButton
+          value="light"
+          label="Nurturant Love"
+          style={styles.radioButton}
+        />
+        <RadioButton
+          value="light"
+          label="Awe"
+          style={styles.radioButton}
+        />
+        <RadioButton
+          value="light"
+          label="Gratitude"
+          style={styles.radioButton}
+        />
+      </RadioButtonGroup>
     )
   }
 }
