@@ -34,7 +34,7 @@ class Question extends React.Component {
   render() {
     return (
       <div>
-        <QuestionPrompt data="Do you like crowds?"/>
+        <QuestionPrompt data={this.props.data}/>
         <QuestionInput />
       </div>
     )
@@ -45,7 +45,8 @@ class Questions extends React.Component {
   render() {
     return (
       <div>
-        <Question />
+        <Question data="Do you like crowds?"/>
+        <Question data="Would you rather pet a fluffy rabbit or learn about a new theory?"/>
       </div>
     )
   }
