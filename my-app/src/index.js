@@ -5,6 +5,16 @@ import './index.css';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Slider from 'material-ui/Slider';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+
+const styles = {
+  block: {
+    maxWidth: 250,
+  },
+  radioButton: {
+    marginBottom: 16,
+  },
+};
 
 class Title extends React.Component {
   render() {
@@ -22,11 +32,27 @@ class QuestionPrompt extends React.Component {
   }
 }
 
+class Radio extends React.Component {
+  render() {
+    return (
+      <RadioButton
+        value="light"
+        label="Simple"
+        style={styles.radioButton}
+      />
+    )
+  }
+}
+
 class QuestionInput extends React.Component {
   render() {
     if (this.props.inputType == "Slider") {
       return (
         <Slider />
+      )
+    } else if (this.props.inputType == "Radio") {
+      return (
+        <Radio />
       )
     }
   }
@@ -50,6 +76,10 @@ class Questions extends React.Component {
         <Question
           data="Do you like crowds?"
           inputType="Slider"
+        />
+        <Question
+          data="What would you like to feel?"
+          inputType="Radio"
         />
         <Question
           data="Would you rather pet a fluffy rabbit or learn about a new theory?"
