@@ -29,41 +29,26 @@ class QuestionPrompt extends React.Component {
   }
 }
 
-class Radio extends React.Component {
+function RadioOptionsList(props) {
+  const options = props.options;
+  const listRadioOptions = options.map((option) =>
+    <RadioButton
+      value="light"
+      label={option}
+      style={styles.radioButton}
+    />
+  );
+  return (
+    <RadioButtonGroup>
+      {listRadioOptions}
+    </RadioButtonGroup>
+  );
+}
+
+class RadioGroup extends React.Component {
   render() {
     return (
-      <RadioButtonGroup>
-        <RadioButton
-          value="light"
-          label="Proud"
-          style={styles.radioButton}
-        />
-        <RadioButton
-          value="light"
-          label="Amused"
-          style={styles.radioButton}
-        />
-        <RadioButton
-          value="light"
-          label="Pleasure"
-          style={styles.radioButton}
-        />
-        <RadioButton
-          value="light"
-          label="Nurturant Love"
-          style={styles.radioButton}
-        />
-        <RadioButton
-          value="light"
-          label="Awe"
-          style={styles.radioButton}
-        />
-        <RadioButton
-          value="light"
-          label="Gratitude"
-          style={styles.radioButton}
-        />
-      </RadioButtonGroup>
+      <RadioOptionsList options={this.props.options} />
     )
   }
 }
@@ -76,7 +61,9 @@ class QuestionInput extends React.Component {
       )
     } else if (this.props.inputType == "Radio") {
       return (
-        <Radio />
+        <RadioGroup
+          options={this.props.options}
+        />
       )
     }
   }
@@ -87,7 +74,10 @@ class Question extends React.Component {
     return (
       <div>
         <QuestionPrompt data={this.props.data}/>
-        <QuestionInput inputType={this.props.inputType}/>
+        <QuestionInput
+          inputType={this.props.inputType}
+          options={this.props.options}
+        />
       </div>
     )
   }
@@ -104,6 +94,7 @@ class Questions extends React.Component {
         <Question
           data="What would you like to feel?"
           inputType="Radio"
+          options={["Proud", "Amused", "Pleasure", "Awe", "Gratitude"]}
         />
         <Question
           data="Would you rather pet a fluffy rabbit or learn about a new theory?"
