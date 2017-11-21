@@ -33,7 +33,7 @@ function RadioOptionsList(props) {
   const options = props.options;
   const listRadioOptions = options.map((option) =>
     <RadioButton
-      value="light"
+      value={option}
       label={option}
       style={styles.radioButton}
     />
